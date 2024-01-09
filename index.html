@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
+</head>
+
+<body>
+    <!-- <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+        aria-controls="offcanvasExample">
+        Link with href
+    </a> -->
+    <div class="d-flex justify-content-between header">
+        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+            aria-controls="offcanvasExample">
+            Projects
+        </button>
+        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#taskModal">
+            Add Task
+        </button>
+    </div>
+
+
+    <div class="offcanvas offcanvas-start bg-secondary" tabindex="-1" id="offcanvasExample"
+        aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Projects</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="dropdown mt-3">
+                <select class="form-select form-select-lg mb-3 dropdown-select" name="dropdown-select"
+                    aria-label=".form-select-lg example">
+                    <option selected>Open this select menu</option>
+                </select>
+            </div>
+            <div class="add-projects mt-3" data-bs-toggle="modal" data-bs-target="#projModal">
+                Add Projects <i class="fa-solid fa-plus"></i>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="projModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form class="projects-form" id="projects-form">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="project-id" class="form-label">Project ID</label>
+                            <input type="number" class="form-control project-id" id="project-id" name="project-id"
+                                min="1" value="1" required />
+                            <span id="project-id-error"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="project-name" class="form-label">Project Title</label>
+                            <input type="text" class="form-control project-name" id="project-name" name="project-name"
+                                placeholder="Mow the lawn" required />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="taskModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1> -->
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form class="tasks-form" id="tasks-form">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="task-id" class="form-label">Task Id</label>
+                            <input type="number" class="form-control task-id" id="task-id" name="task-id" value="1"
+                                required />
+                            <span id="task-id-error"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="task-id" class="form-label">Task Title</label>
+                            <input type="text" class="form-control task-title" id="task-title" name="task-title"
+                                placeholder="Enter Task Title" required />
+                        </div>
+                        <div>
+                            <label for="due-date" class="due-date">Due Date</label>
+                        </div>
+                        <div class="mb-3">
+                            <input type="date" name="date" id="due-date" required />
+                            <span id="date-error"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="task-priority" class="form-label">Task Priority</label>
+                            <select class="form-select mb-3" name="task-priority" id="task-priority" required>
+                                <option selected value="high">High</option>
+                                <option value="medium">Medium</option>
+                                <option value="low">Low</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container content">
+        <ul class="list-group list-group-flush">
+
+        </ul>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
